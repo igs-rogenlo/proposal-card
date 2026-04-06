@@ -80,31 +80,27 @@
   </div>
   <div class="divider"></div>
 
-  <!-- 排名 -->
+  <!-- GPT-5.4 vs GPT-5.4 Pro -->
   <div class="section">
-    <div class="s-title">&#x1F3C6; 模型 Agent 測試分數（Terminal-Bench 2.0 官方）</div>
-    <div class="comp-row">
-      <div style="width:90px;font-size:11px;color:#34D399;font-weight:700">GPT-5.4</div>
-      <div class="bar-bg"><div class="bar-fill" style="width:82%;background:#34D399"></div></div>
-      <div style="width:50px;font-size:12px;font-weight:700;color:#34D399;text-align:right">81.8%</div>
-      <div class="badge" style="background:#34D399;color:#0F172A;margin-left:2px">並列1</div>
+    <div class="s-title">&#x1F3C6; GPT-5.4 vs GPT-5.4 Pro（Plus vs Pro 方案能用的模型）</div>
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <div style="flex:1;background:#1E293B;border-radius:10px;padding:12px 10px;text-align:center;border:1px solid #334155">
+        <div class="badge" style="background:#334155;color:#94A3B8">GPT-5.4</div>
+        <div style="font-size:9px;color:#64748B;margin-top:4px">Plus 可用</div>
+      </div>
+      <div style="flex:1;background:#1E293B;border-radius:10px;padding:12px 10px;text-align:center;border:1px solid #34D399">
+        <div class="badge" style="background:#34D399;color:#0F172A">GPT-5.4 Pro</div>
+        <div style="font-size:9px;color:#64748B;margin-top:4px">Pro 獨佔</div>
+      </div>
     </div>
-    <div class="comp-row">
-      <div style="width:90px;font-size:11px;color:#94A3B8">Claude Opus 4.6</div>
-      <div class="bar-bg"><div class="bar-fill" style="width:82%;background:#A78BFA"></div></div>
-      <div style="width:50px;font-size:12px;font-weight:600;color:#A78BFA;text-align:right">81.8%</div>
-      <div class="badge" style="background:#A78BFA;color:#0F172A;margin-left:2px">並列1</div>
+    <div class="quote">
+      OpenAI 官方說明：GPT-5.4 Pro 使用 <strong>12 倍算力</strong>進行推理，提供「更聰明、更精確的回應」。API 定價也是 12 倍（$30 vs $2.50 / 百萬 token）。
     </div>
-    <div class="comp-row">
-      <div style="width:90px;font-size:11px;color:#94A3B8">Gemini 3.1 Pro</div>
-      <div class="bar-bg"><div class="bar-fill" style="width:80%;background:#60A5FA"></div></div>
-      <div style="width:50px;font-size:12px;font-weight:600;color:#60A5FA;text-align:right">80.2%</div>
-      <div style="width:26px"></div>
+    <div class="quote warn">
+      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; 跑分注意：</span>目前主流 Benchmark（Terminal-Bench 2.0、ARC-AGI-2）排行榜上<strong>僅有 GPT-5.4 基礎版的成績</strong>，尚無 GPT-5.4 Pro 的獨立評測數據可供比較。OpenAI 尚未公開 Pro 的詳細跑分。
     </div>
     <div style="font-size:9px;color:#475569;line-height:1.6">
-      來源：<a href="https://www.tbench.ai/leaderboard/terminal-bench/2.0" target="_blank" style="color:#64748B">tbench.ai</a> 官方排行榜（2026/04）<br/>
-      測試方法：96 個模型在真實終端環境執行多步驟軟體工程任務（檔案檢查、命令執行、程式碼編輯、錯誤修復），由 Terminal-Bench 團隊驗證結果。<br/>
-      註：此排名使用 GPT-5.4 基礎版，Pro 方案獨佔的 GPT-5.4 Pro 推理更強，表現預期更好。
+      來源：<a href="https://developers.openai.com/api/docs/models/gpt-5.4-pro" target="_blank" style="color:#64748B">OpenAI API 文件</a>（GPT-5.4 Pro 定價與說明）
     </div>
   </div>
   <div class="divider"></div>
@@ -137,9 +133,9 @@
     [3] ChatGPT Plus 說明（OpenAI）&mdash; <a href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus" target="_blank">help.openai.com</a><br/>
     [4] Anthropic 封鎖第三方工具 &mdash; <a href="https://techcrunch.com/2026/04/04/anthropic-says-claude-code-subscribers-will-need-to-pay-extra-for-openclaw-support/" target="_blank">TechCrunch (2026/4/4)</a><br/>
     [5] Anthropic 封鎖第三方工具 &mdash; <a href="https://venturebeat.com/technology/anthropic-cuts-off-the-ability-to-use-claude-subscriptions-with-openclaw-and" target="_blank">VentureBeat (2026/4/4)</a><br/>
-    [6] Terminal-Bench 2.0 官方排行榜 &mdash; <a href="https://www.tbench.ai/leaderboard/terminal-bench/2.0" target="_blank">tbench.ai (2026/04)</a><br/>
-    [7] OpenClaw Token 消耗分析 &mdash; <a href="https://phala.com/posts/understanding-openclaws-token-usage" target="_blank">Phala Network</a><br/>
-    [8] GPT-5.4 Pro 介紹（OpenAI）&mdash; <a href="https://openai.com/index/introducing-gpt-5-4/" target="_blank">openai.com (2026/3/5)</a>
+    [6] GPT-5.4 Pro API 文件（OpenAI）&mdash; <a href="https://developers.openai.com/api/docs/models/gpt-5.4-pro" target="_blank">developers.openai.com</a><br/>
+    [7] GPT-5.4 發布公告（OpenAI）&mdash; <a href="https://openai.com/index/introducing-gpt-5-4/" target="_blank">openai.com (2026/3/5)</a><br/>
+    [8] OpenClaw Token 消耗分析 &mdash; <a href="https://phala.com/posts/understanding-openclaws-token-usage" target="_blank">Phala Network</a>
   </div>
 </div>
 </body>
