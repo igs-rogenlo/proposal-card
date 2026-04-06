@@ -25,9 +25,10 @@
   .plan-box { flex: 1; background: #1E293B; border-radius: 10px; padding: 12px 10px; text-align: center; }
   .plan-box.bad { border: 1px solid #334155; }
   .plan-box.good { border: 1px solid #34D399; }
-  .cost-grid { display: flex; gap: 8px; }
-  .cost-box { flex: 1; text-align: center; }
   .footer { padding: 14px 20px; text-align: center; background: #1E293B; }
+  .refs { padding: 12px 20px; font-size: 9px; color: #475569; line-height: 1.8; }
+  .refs a { color: #64748B; text-decoration: none; word-break: break-all; }
+  .refs a:hover { color: #94A3B8; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -35,45 +36,46 @@
   <!-- Header -->
   <div class="header">
     <h1>Agent 開發升級提案</h1>
-    <p>新增 OpenAI Pro（$200/月）&times; 1 帳號</p>
+    <p>新增 OpenAI Pro（$200/月）&times; 1 帳號，供 OpenClaw Agent 使用</p>
   </div>
 
-  <!-- 原因 -->
+  <!-- 背景 -->
   <div class="section">
-    <div class="s-title">&#x1F4CC; 為什麼需要 OpenAI？</div>
+    <div class="s-title">&#x1F4CC; 背景</div>
     <div class="quote">
-      OpenClaw 訂閱版<strong style="color:#F87171"> 不支援 Claude</strong>，只能搭配 OpenAI。<br/>
-      Claude 繼續寫程式，OpenAI 專跑 Agent，各司其職。
+      我們使用 <strong>OpenClaw</strong> 建置 Agent，需搭配 AI 模型訂閱。<br/>
+      Anthropic 自 2026/4/4 起，Claude 訂閱<strong style="color:#F87171">不再支援 OpenClaw</strong>，第三方工具須額外按量計費。<br/>
+      因此需要改用 OpenAI 訂閱作為 OpenClaw 的模型來源。
     </div>
   </div>
   <div class="divider"></div>
 
   <!-- $20 vs $200 -->
   <div class="section">
-    <div class="s-title">&#x1F4B0; 為什麼 $200 不是 $20？</div>
+    <div class="s-title">&#x1F4B0; Plus $20 vs Pro $200</div>
     <div class="plan-grid">
       <div class="plan-box bad">
-        <div class="badge" style="background:#334155;color:#94A3B8">$20 方案</div>
-        <div style="font-size:22px;font-weight:800;color:#F87171;margin-top:8px">40 次<span style="font-size:11px;font-weight:400">/月</span></div>
-        <div style="font-size:10px;color:#94A3B8;margin-top:2px">Agent 上限</div>
-        <div style="font-size:10px;color:#F87171;margin-top:6px">&#x26A0;&#xFE0F; 超限降級為弱模型</div>
-        <div style="font-size:10px;color:#F87171">&#x26A0;&#xFE0F; 無 Pro 引擎</div>
-        <div style="font-size:10px;color:#F87171">&#x26A0;&#xFE0F; GPT-5.2 限 160 則/3hr</div>
+        <div class="badge" style="background:#334155;color:#94A3B8">Plus $20/月</div>
+        <div style="font-size:16px;font-weight:800;color:#F87171;margin-top:8px">有上限</div>
+        <div style="font-size:10px;color:#94A3B8;margin-top:2px">用量受限</div>
+        <div style="font-size:10px;color:#F87171;margin-top:6px">&#x26A0;&#xFE0F; GPT-5.2：160 則/3 小時</div>
+        <div style="font-size:10px;color:#F87171">&#x26A0;&#xFE0F; 超限自動降級為弱模型</div>
+        <div style="font-size:10px;color:#F87171">&#x26A0;&#xFE0F; 無 o1 Pro 模式</div>
       </div>
       <div class="plan-box good">
-        <div class="badge" style="background:#34D399;color:#0F172A">$200 方案</div>
-        <div style="font-size:22px;font-weight:800;color:#34D399;margin-top:8px">無限</div>
-        <div style="font-size:10px;color:#94A3B8;margin-top:2px">Agent 不限次數</div>
-        <div style="font-size:10px;color:#34D399;margin-top:6px">&#x2705; 所有模型無上限</div>
-        <div style="font-size:10px;color:#34D399">&#x2705; 獨佔 Pro 模式</div>
-        <div style="font-size:10px;color:#34D399">&#x2705; GPT-5.2 Pro 引擎</div>
+        <div class="badge" style="background:#34D399;color:#0F172A">Pro $200/月</div>
+        <div style="font-size:16px;font-weight:800;color:#34D399;margin-top:8px">無上限</div>
+        <div style="font-size:10px;color:#94A3B8;margin-top:2px">不限用量</div>
+        <div style="font-size:10px;color:#34D399;margin-top:6px">&#x2705; 所有模型無訊息上限</div>
+        <div style="font-size:10px;color:#34D399">&#x2705; 獨佔 o1 Pro 模式</div>
+        <div style="font-size:10px;color:#34D399">&#x2705; 最高速度優先</div>
       </div>
     </div>
     <div class="quote warn">
-      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; 關鍵差異：</span>$20 方案每月僅 40 次 Agent 執行，超限後自動降級為較弱模型。OpenClaw 背景任務會快速消耗額度，可能幾天就用完整月配額。
+      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; OpenClaw 高耗量：</span>OpenClaw Agent 執行背景任務時會密集呼叫模型。Plus 方案的 160 則/3hr 上限在高頻使用下容易觸頂，超限後降級為弱模型，影響 Agent 任務品質。
     </div>
     <div class="quote warn">
-      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; 多開 $20 帳號？</span>Agent 任務中途換帳號會中斷、狀態丟失要從頭來，而且多開也拿不到 Pro 引擎。
+      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; 多開 $20 帳號？</span>Agent 任務中途換帳號會中斷、狀態丟失要從頭來，而且多開也拿不到 o1 Pro 模式。
     </div>
   </div>
   <div class="divider"></div>
@@ -82,45 +84,24 @@
   <div class="section">
     <div class="s-title">&#x1F3C6; 模型 Agent 測試分數（Terminal-Bench 2.0）</div>
     <div class="comp-row">
-      <div style="width:90px;font-size:11px;color:#34D399;font-weight:700">OpenAI Pro</div>
+      <div style="width:90px;font-size:11px;color:#34D399;font-weight:700">GPT-5.4 Pro</div>
       <div class="bar-bg"><div class="bar-fill" style="width:90%;background:#34D399"></div></div>
       <div style="width:34px;font-size:12px;font-weight:700;color:#34D399;text-align:right">90%</div>
       <div class="badge" style="background:#34D399;color:#0F172A;margin-left:2px">第1</div>
     </div>
     <div class="comp-row">
-      <div style="width:90px;font-size:11px;color:#94A3B8">Google Gemini</div>
+      <div style="width:90px;font-size:11px;color:#94A3B8">Gemini 3.1 Pro</div>
       <div class="bar-bg"><div class="bar-fill" style="width:78%;background:#60A5FA"></div></div>
       <div style="width:34px;font-size:12px;font-weight:600;color:#60A5FA;text-align:right">78%</div>
       <div style="width:26px"></div>
     </div>
     <div class="comp-row">
-      <div style="width:90px;font-size:11px;color:#94A3B8">其他同級模型</div>
+      <div style="width:90px;font-size:11px;color:#94A3B8">Claude Opus 4.6</div>
       <div class="bar-bg"><div class="bar-fill" style="width:75%;background:#64748B"></div></div>
       <div style="width:34px;font-size:12px;font-weight:600;color:#64748B;text-align:right">~75%</div>
       <div style="width:26px"></div>
     </div>
-    <div style="font-size:9px;color:#475569">Terminal-Bench 2.0 ｜ BenchLM (2026/04)</div>
-  </div>
-  <div class="divider"></div>
-
-  <!-- 算帳 -->
-  <div class="section">
-    <div class="s-title">&#x1F4CA; 費用比較</div>
-    <div class="cost-grid">
-      <div class="card cost-box">
-        <div style="font-size:10px;color:#94A3B8">$20 方案</div>
-        <div style="font-size:22px;font-weight:800;color:#F87171;margin-top:4px">$20<span style="font-size:11px;font-weight:400">/月</span></div>
-        <div style="font-size:10px;color:#F87171;margin-top:6px">Agent 限 40 次/月</div>
-        <div style="font-size:10px;color:#F87171">超限降級弱模型</div>
-      </div>
-      <div class="card cost-box">
-        <div style="font-size:10px;color:#94A3B8">$200 方案</div>
-        <div style="font-size:22px;font-weight:800;color:#34D399;margin-top:4px">$200<span style="font-size:11px;font-weight:400">/月</span></div>
-        <div style="font-size:10px;color:#34D399;margin-top:6px">Agent 無次數限制</div>
-        <div style="font-size:10px;color:#34D399">獨佔 Pro 模式引擎</div>
-      </div>
-    </div>
-    <div style="text-align:center;font-size:11px;color:#94A3B8;margin-top:4px">多 $180 換取 <span style="color:#34D399;font-weight:700">無限 Agent</span> + <span style="color:#34D399;font-weight:700">Pro 引擎</span> + <span style="color:#34D399;font-weight:700">無用量焦慮</span></div>
+    <div style="font-size:9px;color:#475569">來源：BenchLM.ai（2026/03）｜ Pro 方案可使用排名第一的 GPT-5.4 Pro</div>
   </div>
   <div class="divider"></div>
 
@@ -129,9 +110,9 @@
     <div class="s-title">&#x2705; 建議</div>
     <div class="card">
       <div style="font-size:12px;line-height:1.9">
-        <span style="color:#38BDF8;font-weight:700">1.</span> 先開 <strong>1 個帳號</strong>測試，月付 $200 不綁約<br/>
-        <span style="color:#38BDF8;font-weight:700">2.</span> 跑 1 個月，記錄成功率數據<br/>
-        <span style="color:#38BDF8;font-weight:700">3.</span> 不滿意隨時取消或降回 $20
+        <span style="color:#38BDF8;font-weight:700">1.</span> 先開 <strong>1 個 Pro 帳號</strong>測試，月付 $200 不綁約<br/>
+        <span style="color:#38BDF8;font-weight:700">2.</span> 跑 1 個月，記錄 OpenClaw Agent 使用量與成效<br/>
+        <span style="color:#38BDF8;font-weight:700">3.</span> 不滿意隨時取消或降回 Plus $20
       </div>
     </div>
   </div>
@@ -139,10 +120,20 @@
   <!-- 總結 -->
   <div class="footer">
     <div style="font-size:12px;font-weight:700;color:#fff;line-height:1.8">
-      OpenClaw 只能用 OpenAI &middot; $20 僅 40 次 Agent/月<br/>
-      <span style="color:#34D399">多花 $180 &rarr; 無限 Agent + Pro 引擎</span>
+      Claude 訂閱已不支援 OpenClaw &middot; Plus 有用量上限會降級<br/>
+      <span style="color:#34D399">Pro：無上限 + o1 Pro 模式 + 最高優先速度</span>
     </div>
-    <div style="font-size:9px;color:#475569;margin-top:8px">資料來源：Artificial Analysis・BenchLM・OpenAI 官方 ｜ 2026/04</div>
+  </div>
+
+  <!-- 參考連結 -->
+  <div class="refs">
+    <strong style="color:#94A3B8">參考來源：</strong><br/>
+    [1] OpenAI 官方定價 &mdash; <a href="https://openai.com/chatgpt/pricing/" target="_blank">openai.com/chatgpt/pricing</a><br/>
+    [2] ChatGPT Pro 說明（OpenAI）&mdash; <a href="https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro" target="_blank">help.openai.com</a><br/>
+    [3] ChatGPT Plus 說明（OpenAI）&mdash; <a href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus" target="_blank">help.openai.com</a><br/>
+    [4] Anthropic 封鎖第三方工具 &mdash; <a href="https://techcrunch.com/2026/04/04/anthropic-says-claude-code-subscribers-will-need-to-pay-extra-for-openclaw-support/" target="_blank">TechCrunch (2026/4/4)</a><br/>
+    [5] Anthropic 封鎖第三方工具 &mdash; <a href="https://venturebeat.com/technology/anthropic-cuts-off-the-ability-to-use-claude-subscriptions-with-openclaw-and" target="_blank">VentureBeat (2026/4/4)</a><br/>
+    [6] Terminal-Bench 2.0 排名 &mdash; <a href="https://benchlm.ai/benchmarks/terminalBench2" target="_blank">BenchLM.ai (2026/03)</a>
   </div>
 </div>
 </body>
