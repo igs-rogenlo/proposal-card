@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 開發升級提案</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #020617; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .wrap { font-family: system-ui, -apple-system, sans-serif; width: 440px; max-width: 100%; margin: 0 auto; background: #0F172A; border-radius: 16px; overflow: hidden; color: #E2E8F0; }
+  .header { background: linear-gradient(135deg, #1E3A5F 0%, #0F172A 100%); padding: 24px 22px 18px; text-align: center; }
+  .header h1 { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: 1px; }
+  .header p { font-size: 12px; color: #94A3B8; margin-top: 4px; }
+  .section { padding: 14px 20px; }
+  .s-title { font-size: 13px; font-weight: 700; color: #38BDF8; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .divider { height: 1px; background: #1E293B; }
+  .card { background: #1E293B; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+  .quote { background: #1E293B; border-left: 3px solid #38BDF8; border-radius: 0 8px 8px 0; padding: 10px 12px; font-size: 11px; color: #CBD5E1; line-height: 1.6; margin-bottom: 8px; }
+  .quote.warn { border-left-color: #F59E0B; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+  .bar-bg { height: 8px; border-radius: 4px; background: #1E293B; overflow: hidden; margin-top: 3px; flex: 1; }
+  .bar-fill { height: 8px; border-radius: 4px; }
+  .comp-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .plan-grid { display: flex; gap: 8px; margin-bottom: 8px; }
+  .plan-box { flex: 1; background: #1E293B; border-radius: 10px; padding: 12px 10px; text-align: center; }
+  .plan-box.bad { border: 1px solid #334155; }
+  .plan-box.good { border: 1px solid #34D399; }
+  .cost-grid { display: flex; gap: 8px; }
+  .cost-box { flex: 1; text-align: center; }
+  .footer { padding: 14px 20px; text-align: center; background: #1E293B; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- Header -->
+  <div class="header">
+    <h1>Agent 開發升級提案</h1>
+    <p>新增 OpenAI Pro（$200/月）&times; 1 帳號</p>
+  </div>
+
+  <!-- 原因 -->
+  <div class="section">
+    <div class="s-title">&#x1F4CC; 為什麼需要 OpenAI？</div>
+    <div class="quote">
+      OpenClaw 訂閱版<strong style="color:#F87171"> 不支援 Claude</strong>，只能搭配 OpenAI。<br/>
+      Claude 繼續寫程式，OpenAI 專跑 Agent，各司其職。
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- $20 vs $200 -->
+  <div class="section">
+    <div class="s-title">&#x1F4B0; 為什麼 $200 不是 $20？</div>
+    <div class="plan-grid">
+      <div class="plan-box bad">
+        <div class="badge" style="background:#334155;color:#94A3B8">$20 方案</div>
+        <div style="font-size:26px;font-weight:800;color:#F87171;margin-top:8px">75%</div>
+        <div style="font-size:10px;color:#94A3B8;margin-top:2px">成功率</div>
+        <div style="font-size:10px;color:#F87171;margin-top:6px">&#x26A0;&#xFE0F; 用量上限嚴格</div>
+        <div style="font-size:10px;color:#F87171">&#x26A0;&#xFE0F; 無 Pro 引擎</div>
+        <div style="font-size:10px;color:#F87171">&#x26A0;&#xFE0F; 實測被封鎖 1.5 天</div>
+      </div>
+      <div class="plan-box good">
+        <div class="badge" style="background:#34D399;color:#0F172A">$200 方案</div>
+        <div style="font-size:26px;font-weight:800;color:#34D399;margin-top:8px">90%</div>
+        <div style="font-size:10px;color:#94A3B8;margin-top:2px">成功率</div>
+        <div style="font-size:10px;color:#34D399;margin-top:6px">&#x2705; 5-20 倍用量</div>
+        <div style="font-size:10px;color:#34D399">&#x2705; Pro 引擎（排名 #1）</div>
+        <div style="font-size:10px;color:#34D399">&#x2705; 不間斷運行</div>
+      </div>
+    </div>
+    <div class="quote warn">
+      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; 實際案例：</span>有用戶用 $20 跑 OpenClaw，因 Agent 高頻呼叫直接被封鎖 1.5 天。OpenClaw 背景任務會讓實際用量暴增 3-5 倍，$20 方案扛不住。
+    </div>
+    <div class="quote warn">
+      <span style="color:#F59E0B;font-weight:700">&#x26A0;&#xFE0F; 多開 $20 帳號？</span>Agent 任務中途換帳號會中斷、狀態丟失要從頭來，而且多開也拿不到 Pro 引擎。
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- 排名 -->
+  <div class="section">
+    <div class="s-title">&#x1F3C6; Agent 能力排名（第三方測試）</div>
+    <div class="comp-row">
+      <div style="width:90px;font-size:11px;color:#34D399;font-weight:700">OpenAI Pro</div>
+      <div class="bar-bg"><div class="bar-fill" style="width:90%;background:#34D399"></div></div>
+      <div style="width:34px;font-size:12px;font-weight:700;color:#34D399;text-align:right">90%</div>
+      <div class="badge" style="background:#34D399;color:#0F172A;margin-left:2px">第1</div>
+    </div>
+    <div class="comp-row">
+      <div style="width:90px;font-size:11px;color:#94A3B8">Google Gemini</div>
+      <div class="bar-bg"><div class="bar-fill" style="width:78%;background:#60A5FA"></div></div>
+      <div style="width:34px;font-size:12px;font-weight:600;color:#60A5FA;text-align:right">78%</div>
+      <div style="width:26px"></div>
+    </div>
+    <div class="comp-row">
+      <div style="width:90px;font-size:11px;color:#94A3B8">其他同級模型</div>
+      <div class="bar-bg"><div class="bar-fill" style="width:75%;background:#64748B"></div></div>
+      <div style="width:34px;font-size:12px;font-weight:600;color:#64748B;text-align:right">~75%</div>
+      <div style="width:26px"></div>
+    </div>
+    <div style="font-size:9px;color:#475569">Terminal-Bench 2.0 ｜ BenchLM (2026/04)</div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- 算帳 -->
+  <div class="section">
+    <div class="s-title">&#x1F4CA; 算帳</div>
+    <div class="cost-grid">
+      <div class="card cost-box">
+        <div style="font-size:10px;color:#94A3B8">$20 方案</div>
+        <div style="font-size:10px;color:#94A3B8">訂閱 + 人工善後</div>
+        <div style="font-size:22px;font-weight:800;color:#F87171;margin-top:4px">$1,520</div>
+        <div style="font-size:9px;color:#64748B">$20 + 人力 $1,500</div>
+      </div>
+      <div class="card cost-box">
+        <div style="font-size:10px;color:#94A3B8">$200 方案</div>
+        <div style="font-size:10px;color:#94A3B8">訂閱 + 人工善後</div>
+        <div style="font-size:22px;font-weight:800;color:#34D399;margin-top:4px">$800</div>
+        <div style="font-size:9px;color:#64748B">$200 + 人力 $600</div>
+      </div>
+    </div>
+    <div style="text-align:center;font-size:12px;font-weight:700;color:#34D399;margin-top:4px">每月淨省 $720</div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- 建議 -->
+  <div class="section">
+    <div class="s-title">&#x2705; 建議</div>
+    <div class="card">
+      <div style="font-size:12px;line-height:1.9">
+        <span style="color:#38BDF8;font-weight:700">1.</span> 先開 <strong>1 個帳號</strong>測試，月付 $200 不綁約<br/>
+        <span style="color:#38BDF8;font-weight:700">2.</span> 跑 1 個月，記錄成功率數據<br/>
+        <span style="color:#38BDF8;font-weight:700">3.</span> 不滿意隨時取消或降回 $20
+      </div>
+    </div>
+  </div>
+
+  <!-- 總結 -->
+  <div class="footer">
+    <div style="font-size:12px;font-weight:700;color:#fff;line-height:1.8">
+      OpenClaw 只能用 OpenAI &middot; $20 會被封鎖撞限<br/>
+      <span style="color:#34D399">多花 $180 &rarr; 每月省 $720 人力 &rarr; 投報率 4 倍</span>
+    </div>
+    <div style="font-size:9px;color:#475569;margin-top:8px">資料來源：Artificial Analysis・BenchLM・OpenAI 官方 ｜ 2026/04</div>
+  </div>
+</div>
+</body>
+</html>
